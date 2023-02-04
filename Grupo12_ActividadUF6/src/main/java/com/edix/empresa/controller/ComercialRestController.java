@@ -84,7 +84,7 @@ public class ComercialRestController {
 	}
 	
 	/**
-	 * Devolver todos los productos que haya atendido el comercial con ese id
+	 * Devolver todos los pedidos que haya atendido el comercial con ese id
 	 * @param idComercial
 	 * @return
 	 */
