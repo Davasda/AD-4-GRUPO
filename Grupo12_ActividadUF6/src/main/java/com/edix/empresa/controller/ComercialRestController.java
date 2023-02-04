@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.edix.empresa.entities.Comerciale;
 import com.edix.empresa.entities.Pedido;
-import com.edix.empresa.repository.PedidoRepository;
 import com.edix.empresa.service.ComercialService;
 import com.edix.empresa.service.PedidoService;
 
@@ -29,11 +28,11 @@ public class ComercialRestController {
 	/**
 	 * Dar de alta el comercial mediante la @Query en la calase Comercial Service
 	 * @param comercial
-	 * @return
+	 * @return String que nos informa si el alta se ha realizado correctamente.
 	 */
 	@PostMapping("/alta")
-	public Comerciale alta(@RequestBody Comerciale comercial) {
-		return cServ.altaComercial(comercial); 	
+	public String alta(@RequestBody Comerciale comercial) {
+		return (cServ.altaComercial(comercial)) != null?"Alta de comercial REALIZADA":"Error al dar de alta comercial";
 	}
 	
 	/**
@@ -58,11 +57,11 @@ public class ComercialRestController {
 	/**
 	 * Mediante el Id de un comercial, eliminarlo de la Base de Datos
 	 * @param idComercial
-	 * @return
+	 * @return Devuelve un String con el texto de si el comercial ha sido o no eliminado.
 	 */
 	@DeleteMapping("/eliminar/{id}")
-	public boolean eliminarUno(@PathVariable("id") int idComercial) {
-		return cServ.eliminarComercial(idComercial);
+	public String eliminarUno(@PathVariable("id") int idComercial) {
+		return (cServ.eliminarComercial(idComercial)) == true?"Comercial ELIMINADO":"Error eliminar el comercial";	
 	}
 
 	/**

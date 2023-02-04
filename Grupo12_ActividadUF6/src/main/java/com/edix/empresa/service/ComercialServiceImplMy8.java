@@ -22,6 +22,7 @@ public class ComercialServiceImplMy8 implements ComercialService{
 				return cRepo.save(comercial);
 		return null;
 	}
+	
 	/**
 	 * Buscamos un comercial, mediante su id
 	 */
@@ -45,17 +46,22 @@ public class ComercialServiceImplMy8 implements ComercialService{
 	 */
 	@Override
 	public boolean eliminarComercial(int idComercial) {
-		if (buscarUno(idComercial) != null) {
-			 cRepo.deleteById(idComercial);
-		return true;
+		try{
+			if (buscarUno(idComercial)!=null) {
 		}
-		return false;
+			cRepo.deleteById(idComercial);
+			return true;
+		}catch (Exception e) {
+			return false;
+		}
 	}
+	
 	@Override
 	public List<Comerciale> porCliente(int idCliente) {
 		// TODO Auto-generated method stub
 		return cRepo.porCliente(idCliente);
 	}
+	
 	@Override
 	public List<Comerciale> comercialesConPedidos() {
 		// TODO Auto-generated method stub

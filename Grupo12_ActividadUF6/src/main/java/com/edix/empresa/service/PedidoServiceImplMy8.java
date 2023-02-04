@@ -15,19 +15,15 @@ public class PedidoServiceImplMy8 implements PedidoService {
 	@Autowired
 	private PedidoRepository pRepo;
 
-
-
-	@Override
-	public List<Pedido> buscarTodosPedidos() {
-
-		return pRepo.findAll();
-	}
-
-
-
 	@Override
 	public List<Pedido> pedidosPorComercial(int idComercial) {	
 		return pRepo.pedidosPorComercial(idComercial);
+	}
+	
+	
+	@Override
+	public List<Pedido> buscarTodosPedidos() {
+		return pRepo.findAll();
 	}
 	
 
