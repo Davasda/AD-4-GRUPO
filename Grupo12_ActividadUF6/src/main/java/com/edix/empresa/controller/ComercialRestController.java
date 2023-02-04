@@ -13,9 +13,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.edix.empresa.entities.Comerciale;
 import com.edix.empresa.entities.Pedido;
-import com.edix.empresa.repository.ComercialRepository;
 import com.edix.empresa.repository.PedidoRepository;
 import com.edix.empresa.service.ComercialService;
+import com.edix.empresa.service.PedidoService;
 
 @RestController
 @RequestMapping("/comercial")
@@ -23,9 +23,8 @@ public class ComercialRestController {
 	@Autowired
 	private ComercialService cServ;
 	@Autowired
-	private PedidoRepository pRepo;
-	@Autowired
-	private ComercialRepository cRepo;
+	private PedidoService pServ;
+	
 	
 	/**
 	 * Dar de alta el comercial mediante la @Query en la calase Comercial Service
@@ -73,7 +72,7 @@ public class ComercialRestController {
 	 */
 	@GetMapping("/bycliente/{id}")
 	public List<Comerciale> byCliente(@PathVariable("id") int idCliente) {
-		return pRepo.porCliente(idCliente);
+		return cServ.porCliente(idCliente);
 	}
 	
 	/**
@@ -82,7 +81,7 @@ public class ComercialRestController {
 	 */
 	@GetMapping("/conpedidos")
 	public List<Comerciale> comercialPedidos() {
-		return cRepo.comercialesConPedidos();
+		return cServ.comercialesConPedidos();
 	}
 	
 	/**
@@ -92,6 +91,6 @@ public class ComercialRestController {
 	 */
 	@GetMapping("/pedidos/{id}")
 	public List<Pedido> porPedidos(@PathVariable("id") int idComercial) {
-		return pRepo.pedidosPorComercial(idComercial);
+		return pServ.pedidosPorComercial(idComercial);
 	}
 }

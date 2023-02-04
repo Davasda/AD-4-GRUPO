@@ -51,5 +51,15 @@ public class ComercialServiceImplMy8 implements ComercialService{
 		}
 		return false;
 	}
+	@Override
+	public List<Comerciale> porCliente(int idCliente) {
+		// TODO Auto-generated method stub
+		return cRepo.porCliente(idCliente);
+	}
+	@Override
+	public List<Comerciale> comercialesConPedidos() {
+		// TODO Auto-generated method stub
+		return cRepo.comercialesConPedidos();
+	}
 
 }

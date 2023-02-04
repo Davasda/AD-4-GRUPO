@@ -9,4 +9,6 @@ public interface ComercialService {
 	Comerciale buscarUno(int idComercial);
 	List<Comerciale> buscarTodos();
 	boolean eliminarComercial(int idComercial);
+	List<Comerciale>	porCliente(int idCliente);
+	List<Comerciale>	comercialesConPedidos();
 }
